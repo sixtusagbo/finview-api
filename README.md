@@ -8,7 +8,6 @@ A simple API to fetch and analyze annual income statements for AAPL (Apple). The
 - [Features](#features)
 - [Getting started](#getting-started)
 - [Running the Project](#running-the-project)
-- [Deployment](#deployment-1)
 
 ## Deployment
 
@@ -22,8 +21,7 @@ The API is deployed on Vercel.
 
 - **Income Statement Data Retrieval**:
 
-  - Complete annual income statement data for AAPL
-  - Key financial metrics including:
+  - Return key financial metrics including:
     - Date of statement
     - Revenue
     - Net Income
