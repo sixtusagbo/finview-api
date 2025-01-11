@@ -4,9 +4,9 @@ A simple API to fetch and analyze annual income statements for AAPL (Apple). The
 
 ## Deployment
 
-Try it out: https://finview-api.vercel.app
-API Documentation: https://finview-api.vercel.app/docs
-Alternative API Documentation: https://finview-api.vercel.app/redoc
+* Try it out: https://finview-api.vercel.app
+* API Documentation: https://finview-api.vercel.app/docs
+* Alternative API Documentation: https://finview-api.vercel.app/redoc
 
 ## Getting started
 
