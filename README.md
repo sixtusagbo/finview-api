@@ -2,11 +2,46 @@
 
 A simple API to fetch and analyze annual income statements for AAPL (Apple). The API is designed to provide insights into key metrics such as revenue, net income, gross profit, EPS(Earnings Per Share) and operating income. The API is built using Python and FastAPI framework.
 
+## Table of Contents
+
+- [Deployment](#deployment)
+- [Features](#features)
+- [Getting started](#getting-started)
+- [Running the Project](#running-the-project)
+- [Deployment](#deployment-1)
+
 ## Deployment
 
-* Try it out: https://finview-api.vercel.app
-* API Documentation: https://finview-api.vercel.app/docs
-* Alternative API Documentation: https://finview-api.vercel.app/redoc
+The API is deployed on Vercel.
+
+- Try it out: https://finview-api.vercel.app
+- API Documentation: https://finview-api.vercel.app/docs
+- Alternative API Documentation: https://finview-api.vercel.app/redoc
+
+## Features
+
+- **Income Statement Data Retrieval**:
+
+  - Complete annual income statement data for AAPL
+  - Key financial metrics including:
+    - Date of statement
+    - Revenue
+    - Net Income
+    - Gross Profit
+    - EPS (Earnings Per Share)
+    - Operating Income
+
+- **Advanced Filtering Capabilities**:
+
+  - Date range filtering (e.g., 2020-2024)
+  - Revenue range filtering (minimum and maximum)
+  - Net Income range filtering (minimum and maximum)
+
+- **Flexible Sorting Options**:
+
+  - Sort by date (ascending/descending)
+  - Sort by revenue (ascending/descending)
+  - Sort by net income (ascending/descending)
 
 ## Getting started
 
@@ -37,12 +72,3 @@ To run the project locally:
 ```bash
 fastapi dev api/v1/main.py
 ```
-
-## Deployment
-
-The API is deployed on Vercel and can be accessed at [https://finview-api.vercel.app/](https://finview-api.vercel.app/).
-
-### API Documentation
-
-- Interactive API documentation (Swagger UI): [https://finview-api.vercel.app/docs](https://finview-api.vercel.app/docs)
-- OpenAPI specification: [https://finview-api.vercel.app/openapi.json](https://finview-api.vercel.app/openapi.json)
