@@ -2,6 +2,8 @@ from fastapi import APIRouter
 from os import getenv
 import requests
 
+from api.models.income_statement import IncomeStatement
+
 router = APIRouter(
     prefix="/statements",
     tags=["financial_statements"],
@@ -19,13 +21,13 @@ def get_income_statement():
     result = []
     for item in data:
         result.append(
-            {
-                "date": item["date"],
-                "revenue": item["revenue"],
-                "net_income": item["netIncome"],
-                "gross_profit": item["grossProfit"],
-                "eps": item["eps"],
-                "operating_income": item["operatingIncome"],
-            }
+            IncomeStatement(
+                date=item["date"],
+                revenue=item["revenue"],
+                net_income=item["netIncome"],
+                gross_profit=item["grossProfit"],
+                eps=item["eps"],
+                operating_income=item["operatingIncome"],
+            )
         )
     return result
