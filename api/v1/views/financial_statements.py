@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Query
 from os import getenv
 import requests
-from typing import Optional, Annotated
+from typing import Optional, Annotated, Literal
 from datetime import datetime
 
 from api.models.income_statement import IncomeStatement
@@ -35,8 +35,12 @@ def get_income_statement(
     max_net_income: Annotated[
         Optional[float], Query(description="Maximum net income value")
     ] = None,
+    sort_by: Optional[Literal["date", "revenue", "net_income"]] = "date",
+    order: Annotated[
+        Optional[Literal["asc", "desc"]], Query(description="Sort order (asc or desc)")
+    ] = "desc",
 ):
-    """Return the filtered income statement"""
+    """Return the filtered and sorted income statement"""
     key = getenv("FMP_KEY")
     endpoint = f"https://financialmodelingprep.com/api/v3/income-statement/AAPL?period=annual&apikey={key}"
     response = requests.get(endpoint)
@@ -75,4 +79,15 @@ def get_income_statement(
                 operating_income=item["operatingIncome"],
             )
         )
+
+    # Apply sorting
+    if sort_by:
+        reverse = order == "desc"
+        if sort_by == "date":
+            result.sort(key=lambda x: x.date, reverse=reverse)
+        elif sort_by == "revenue":
+            result.sort(key=lambda x: x.revenue, reverse=reverse)
+        elif sort_by == "net_income":
+            result.sort(key=lambda x: x.net_income, reverse=reverse)
+
     return result
