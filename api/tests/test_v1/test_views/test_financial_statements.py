@@ -127,3 +127,46 @@ def test_no_results_with_filters():
 
         assert response.status_code == 200
         assert response.json() == []
+
+
+def test_sort_by_date():
+    """Test sorting income statements by date"""
+    with patch("requests.get") as mock_get:
+        mock_get.return_value.json.return_value = MOCK_INCOME_STATEMENTS
+        mock_get.return_value.status_code = 200
+
+        response = client.get("/statements/income?sort_by=date&order=asc")
+        
+        assert response.status_code == 200
+        data = response.json()
+        assert len(data) == 3
+        assert data[0]["date"] == "2020-12-31"
+        assert data[-1]["date"] == "2022-12-31"
+
+def test_sort_by_revenue():
+    """Test sorting income statements by revenue"""
+    with patch("requests.get") as mock_get:
+        mock_get.return_value.json.return_value = MOCK_INCOME_STATEMENTS
+        mock_get.return_value.status_code = 200
+
+        response = client.get("/statements/income?sort_by=revenue&order=desc")
+        
+        assert response.status_code == 200
+        data = response.json()
+        assert len(data) == 3
+        assert data[0]["revenue"] == 1000000
+        assert data[-1]["revenue"] == 600000
+
+def test_sort_by_net_income():
+    """Test sorting income statements by net income"""
+    with patch("requests.get") as mock_get:
+        mock_get.return_value.json.return_value = MOCK_INCOME_STATEMENTS
+        mock_get.return_value.status_code = 200
+
+        response = client.get("/statements/income?sort_by=net_income&order=asc")
+        
+        assert response.status_code == 200
+        data = response.json()
+        assert len(data) == 3
+        assert data[0]["net_income"] == 60000
+        assert data[-1]["net_income"] == 100000
